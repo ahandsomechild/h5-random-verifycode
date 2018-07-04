@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>验证码</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
+</head>
+<style>
+    #content{
+        width:300px;
+        margin:300px auto;
+        text-align: center;
+    }
+
+    button{
+        margin:20px auto;
+    }
+</style>
+<body>
+    <div id="content">
+        <div id = "v_container" style = "width:200px;height:50px;margin:10px auto;"></div>
+        <input class="form-control" id="code_input" type="text" placeholder="请输入验证码">
+        <button type="button" id="my_button" class="btn btn-primary">原始按钮</button>
+    </div>    
+</body>
+<script>
+    var verifyCode = new GVerify("v_container");
+
+    document.getElementById("my_button").onclick = function(){
+        var res = verifyCode.validate(document.getElementById("code_input").value);
+        if(res){
+            alert("验证正确");
+        }else{
+            alert("验证码错误");
+        }
+    }
+</script>
+</html>
